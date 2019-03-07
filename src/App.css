@@ -1,33 +1,116 @@
-.App {
+body {
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+}
+
+h1 {
   text-align: center;
+  font-size: 40px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.arrow-up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.arrow-down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.button {
+  color: #e6e6e6;
+  background: #0a0a0a;
+  border: none;
+  font-size: 16px;
+  border-radius: 3px;
+  width: 200px;
+  text-align: center;
+  display: block;
+  padding: 7px 0;
+  margin: 10px auto;
+}
+
+.button:hover:enabled {
+  background: linear-gradient(#1a1a1a,#0a0a0a);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.arrowButton{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.column{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.column input {
+  border-radius: 3px;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,0.43);
+  font-size: 20px;
+  width: 50%;
+}
+
+.column label{
+  text-align: center;
+  font-size: 30px;
+  font-weight: 200;
+}
+
+.error{
+  font-size: 20px;
+  color: red;
+  text-align: center;
+}
+
+.header{
+  text-align: center;
+  font-size: 30px;
+  font-weight: 200;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 90%;
+}
+
+.table td, .table th {
+  padding: 8px;
+}
+
+.table tr:nth-child(even){background-color: #f2f2f2;}
+
+.table tr:hover {background-color: #ddd;}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4d73ab;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tableContainer{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 50px;
 }
