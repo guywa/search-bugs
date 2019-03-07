@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function ResultsTable (props){
-  console.log(props, 'uu');
+
   return(
     <div className='tableContainer'>
     <table className="table">
@@ -13,7 +13,8 @@ export default function ResultsTable (props){
               Country
               <button
                 className='arrowButton'
-                onClick={() => props.sortBy('country')}>
+                onClick={() => props.sortBy('country')}
+                disabled={!props.data.length}>
                   <i className="arrow arrow-down"></i>
               </button>
               </th>
@@ -21,7 +22,8 @@ export default function ResultsTable (props){
               Bugs
               <button
                 className='arrowButton'
-                onClick={() => props.sortBy('bugs')}>
+                onClick={() => props.sortBy('bugs')}
+                disabled={!props.data.length}>
                   <i className="arrow arrow-down"></i>
               </button>
             </th>
@@ -34,14 +36,14 @@ export default function ResultsTable (props){
                 <td >{row.firstName}</td>
                 <td>{row.lastName}</td>
                 <td>{row.country}</td>
-                <td>{row.bugs}</td>
+                <td>{row.bugs.map((bug) => ( bug.title)).join(", ")}</td>
               </tr>
             ))
           : <tr key={props.data.firstName}>
               <td >{props.data.firstName}</td>
               <td>{props.data.lastName}</td>
               <td>{props.data.country}</td>
-              <td>{props.data.bugs.split(',')}</td>
+              <td>{ props.data.bugs.map((bug) => ( bug.title)).join(", ")}</td>
             </tr>
         }
         </tbody>

@@ -22,18 +22,20 @@ class Main extends Component {
   }
 
   sortBy(key) {
-    this.setState((prevState) => ({
-      results: prevState.results.sort((a,b) => (
-        this.state.direction[key] === 'asc'
-          ? compareDescend(a, b, key)
-          : compareAscend(a, b, key)
-        )),
-        direction: {
-          [key]: this.state.direction[key] === 'asc'
-            ? 'desc'
-            : 'asc'
-        }
-    }));
+    if (this.state.results.length !== 1) {
+      this.setState(() => ({
+        results: this.state.results.sort((a,b) => (
+          this.state.direction[key] === 'asc'
+            ? compareDescend(a, b, key)
+            : compareAscend(a, b, key)
+          )),
+          direction: {
+            [key]: this.state.direction[key] === 'asc'
+              ? 'desc'
+              : 'asc'
+          }
+      }));
+    }
   }
 
   handleSubmit(search) {
@@ -49,14 +51,17 @@ class Main extends Component {
               error: 'Temporary error occurred, please try again later”',
           }));
         }else{
-
-          for (let i = 0; i < results.length; i++) {
-            results[i].bugs = results[i].bugs.join(', ');
+          if (results.length > 1) {
+            return this.setState(() => ({
+                      results: results.sort((a,b) => (compareAscend(a, b, 'firstName'))),
+                      error: null,
+                    }));
+          }else {
+            return this.setState(() => ({
+                      results: results,
+                      error: null,
+                    }));
           }
-          return this.setState(() => ({
-                  results: results.sort((a,b) => (compareAscend(a, b, 'firstName'))),
-                  error: null,
-                }));
         }
       });
   }
